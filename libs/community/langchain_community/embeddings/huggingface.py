@@ -89,7 +89,7 @@ class HuggingFaceEmbeddings(BaseModel, Embeddings):
         """
         import sentence_transformers
 
-        texts = list(map(lambda x: x.replace("\n", " "), texts))
+        texts = list(map(lambda x: str(x).replace("\n", " "), texts))
         if self.multi_process:
             pool = self.client.start_multi_process_pool()
             embeddings = self.client.encode_multi_process(texts, pool)
